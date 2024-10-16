@@ -124,6 +124,62 @@ class Config
         return $res;
     }
 
+    function addstation($platform_count, $station_name)
+    {
+        $this->initConfig();
+
+        $query = "INSERT INTO station(platform_count,station_name) VALUES($platform_count,'$station_name');";
+
+        $res = mysqli_query($this->conn, $query);
+        return $res;
+    }
+
+    function fetchSinglestation($id)
+    {
+        $this->initConfig();
+
+        $query = "SELECT * FROM station WHERE station_id=$id;";
+
+        $res = mysqli_query($this->conn, $query);
+
+        return $res;
+    }
+
+    function fetchAllstation()
+    {
+        $this->initConfig();
+
+        $query = "SELECT * FROM station;";
+
+        $res = mysqli_query($this->conn, $query);
+
+        return $res;
+    }
+
+    function updatestation($platform_count, $station_name, $id)
+    {
+
+        $this->initConfig();
+
+        $query = "UPDATE station SET platform_count=$platform_count, station_name='$station_name'  WHERE station_id=$id;";
+
+        $res = mysqli_query($this->conn, $query);
+
+        return $res;
+    }
+
+    function deleteStation($id)
+    {
+
+        $this->initConfig();
+
+        $query = "DELETE FROM station WHERE station_id=$id;";
+
+        $res = mysqli_query($this->conn, $query);
+
+        return $res;
+    }
+
 }
 
 
